@@ -35,7 +35,7 @@ $link = mysqli_connect('localhost','id21392514_admin','admiN12.','id21392514_con
 
 $pdf = new PDF();
 
-$title = 'Clientes registrados';
+$title = 'Reparaciones por repuesto';
 $pdf->SetTitle($title);
 
 $pdf->AddPage();
@@ -43,12 +43,14 @@ $pdf->AddPage();
 /* $pdf->Table($link,'SELECT * FROM `clientes`');
 $pdf->AddPage(); */
 // Second table: specify 3 columns
-$pdf->AddCol('dni',25,'DNI','C');
-$pdf->AddCol('nombre',30,'Nombre');
+$pdf->AddCol('id',25,'ID','C');
+$pdf->AddCol('Nombre',70,'Nombre','C');
+$pdf->AddCol('caa',60,'Cantidad de reparaciones','C');
 $prop = array('HeaderColor'=>array(255,150,100),
 			'color1'=>array(210,245,255),
 			'color2'=>array(255,255,210),
 			'padding'=>2);
-$pdf->Table($link,'SELECT * FROM `clientes`',$prop);
+$consulta ="SELECT c.descripcion AS Nombre, c.id AS id, COUNT(r.id_rep) AS caa FROM `repuesto` c JOIN `reparacion` r ON c.id = r.id_rep GROUP BY c.id;";
+$pdf->Table($link,$consulta,$prop);
 $pdf->Output();
 ?>

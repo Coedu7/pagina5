@@ -35,7 +35,7 @@ $link = mysqli_connect('localhost','id21392514_admin','admiN12.','id21392514_con
 
 $pdf = new PDF();
 
-$title = 'Clientes registrados';
+$title = 'Reparaciones registradas';
 $pdf->SetTitle($title);
 
 $pdf->AddPage();
@@ -43,12 +43,16 @@ $pdf->AddPage();
 /* $pdf->Table($link,'SELECT * FROM `clientes`');
 $pdf->AddPage(); */
 // Second table: specify 3 columns
-$pdf->AddCol('dni',25,'DNI','C');
-$pdf->AddCol('nombre',30,'Nombre');
+$pdf->AddCol('id_cli',25,'DNI-Cliente','C');
+$pdf->AddCol('id_mec',30,'ID-Mecanico','C');
+$pdf->AddCol('id_rep',30,'ID-Repuesto','C');
+$pdf->AddCol('placa',40,'Placa del vehiculo','C');
+$pdf->AddCol('tipo',30,'Estado','C');
 $prop = array('HeaderColor'=>array(255,150,100),
 			'color1'=>array(210,245,255),
 			'color2'=>array(255,255,210),
 			'padding'=>2);
-$pdf->Table($link,'SELECT * FROM `clientes`',$prop);
+$consulta ="SELECT * FROM reparacion";
+$pdf->Table($link,$consulta,$prop);
 $pdf->Output();
 ?>

@@ -1,5 +1,3 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -73,7 +71,7 @@ initial-scale=1.0">
             $("#resultado").html("Procesando, espere por favor...");
         },
         success: function(response) {
-            $("#resultado").html(response);
+            $("#resultado").html('response');
         },
         error: function(jqXHR, textStatus, errorThrown) {
             console.log(textStatus, errorThrown);

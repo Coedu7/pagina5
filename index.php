@@ -56,9 +56,10 @@
 
             <!-- Botón para calcular -->
             <button type="button" class="btn btn-primary" id="calcular-btn">Calcular</button>
-            <a href="repRes.php">Reporte de resumen</a>
-            <a href="repHist.php">Reporte de clientes</a>
-            <a href="registro.php">Gestión de clientes</a>
+            <a href="clientes.php">Gestión de clientes</a>
+            <a href="mecanicos.php">Gestión de mecanicos</a>
+            <a href="carros.php">Gestión de carros</a>
+            <a href="repuestos.php">Gestión de repuestos</a>
         </form>
         <br>
     </div>            
